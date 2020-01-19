@@ -4,7 +4,7 @@
     <div class="content-container">
       <films-list :films='films'></films-list>
       <film-details v-if='selectedFilm' :selected-film='selectedFilm'></film-details>
-      <favourite-films :favourite-films="favouriteFilms"></favourite-films>
+      <favourite-films v-if='favouriteFilms' :favourite-films="favouriteFilms"></favourite-films>
     </div>
 </div>
 </template>
@@ -14,14 +14,14 @@
 import { eventBus } from './main.js';
 import FilmsList from './components/FilmsList.vue';
 import FilmDetails from './components/FilmDetails.vue';
-import FavouriteFilms from './components/FavouriteFilms.vue'
+import FavouriteFilms from './components/FavouriteFilms.vue';
 export default {
   name: 'app',
   data(){
     return {
       films: [],
       selectedFilm: null,
-      favouriteFilms: null
+      favouriteFilms: []
     }
   },
   mounted() {
@@ -31,6 +31,9 @@ export default {
 
     eventBus.$on('selected-film', (film) => {
       this.selectedFilm = film
+    })
+    eventBus.$on('favourite-films', (favouriteFilm) => {
+      this.selectedFilm.push(favouriteFilm)
     })
   },
   components: {
