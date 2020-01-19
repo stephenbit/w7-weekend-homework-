@@ -23,8 +23,7 @@ export default {
   props: ['selected-film'],
   methods: {
     addToFavourites() {
-      eventBus.$emit('favourite-film', this.selectedFilm)
-      console.log("egg");
+      eventBus.$emit('favourite-films', this.selectedFilm)
     },
   }
 }
@@ -33,11 +32,9 @@ export default {
 
 <style lang="css" scoped>
 
-h2 {
-  font-size: 2em;
+.button {
+  cursor: pointer;
+
 }
 
-h2 b {
-  font-size: 50%;
-}
 </style>

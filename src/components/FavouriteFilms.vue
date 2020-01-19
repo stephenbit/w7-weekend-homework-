@@ -2,25 +2,23 @@
   <div id="FavouriteFilms">
     <h2>Favourites</h2>
     <ul>
-      <li v-for="favouriteFilm in favouriteFilms"> {{favouriteFilm.name}} </li>
-      <p>test</p>
+      <li v-for="favouriteFilm in favouriteFilms"> {{favouriteFilm.title}} <a v-on:click="removeFromFavourites">🗑️</a></li>
     </ul>
   </div>
 </template>
-
-
-
-<!-- <ul>
-  <li v-on:click="handleClick(index)" v-for="(film, index) in films"> {{ film.title }} </li>
-</ul> -->
 
 <script>
 import { eventBus } from '../main.js';
 import app from '../App.vue';
 export default {
   name: 'favourite-films',
-  props: ['favouriteFilms']
+  props: ['favouriteFilms'],
+  methods: {
+    removeFromFavourites() {
+      eventBus.$emit('remove-favourite', this.favouriteFilm)
+    },
   }
+}
 
 
 
@@ -30,4 +28,17 @@ export default {
   h2 {
     font-size: 2em;
   }
+
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  li:a {
+    text-decoration: none;
+  }
+
 </style>

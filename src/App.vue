@@ -33,9 +33,15 @@ export default {
       this.selectedFilm = film
     })
     eventBus.$on('favourite-films', (favouriteFilm) => {
-      this.selectedFilm.push(favouriteFilm)
+      if (!this.favouriteFilms.includes(favouriteFilm)){
+        this.favouriteFilms.push(favouriteFilm)
+      }
+    })
+    eventBus.$on('remove-favourite', (film) => {
+      favouriteFilms.pop(film)
     })
   },
+
   components: {
     "films-list": FilmsList,
     "film-details": FilmDetails,
@@ -55,5 +61,13 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   border:
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  list-style-type: none;
 }
 </style>

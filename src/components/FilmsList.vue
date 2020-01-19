@@ -1,5 +1,6 @@
 <template lang="html">
 <div id="filmList">
+  <h2>Films</h2>
   <ul>
     <li v-on:click="handleClick(index)" v-for="(film, index) in films"> {{ film.title }} </li>
   </ul>
@@ -20,4 +21,20 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  font-size: 1.2em;
+  cursor: pointer;
+  list-style-type: none;
+}
+
+li:hover {
+  background-color: yellow;
+
+}
+
 </style>
