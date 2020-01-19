@@ -1,10 +1,11 @@
 <template lang="html">
-  <div class="app">
+  <div id="app" class="app">
     <h1>Studio Ghibli Films</h1>
+    <h2>株式会社スタジオジブリ</h2>
     <div class="content-container">
-      <films-list :films='films'></films-list>
+      <films-list v-if='films.legnth!==0' :films='films'></films-list>
       <film-details v-if='selectedFilm' :selected-film='selectedFilm'></film-details>
-      <favourite-films v-if='favouriteFilms' :favourite-films="favouriteFilms"></favourite-films>
+      <favourite-films v-if='favouriteFilms.length!==0' :favourite-films="favouriteFilms"></favourite-films>
     </div>
 </div>
 </template>
@@ -37,8 +38,8 @@ export default {
         this.favouriteFilms.push(favouriteFilm)
       }
     })
-    eventBus.$on('remove-favourite', (film) => {
-      favouriteFilms.pop(film)
+    eventBus.$on('remove-favourite', film => {
+      this.favouriteFilms.pop(film)
     })
   },
 
@@ -52,15 +53,24 @@ export default {
 
 <style lang="css" scoped>
 
+.app {
+  background-color: pink;
+}
+
 h1 {
   font-size: 4em;
   text-align: center;
 }
 
+h2 {
+  font-size: 2em;
+  text-align: center;
+  padding-top: 1px;
+}
+
 .content-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  border:
 }
 
 ul {

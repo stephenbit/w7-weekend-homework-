@@ -1,5 +1,5 @@
 <template lang="html">
-<div id="filmList">
+<div id="filmList" class="filmList">
   <h2>Films</h2>
   <ul>
     <li v-on:click="handleClick(index)" v-for="(film, index) in films"> {{ film.title }} </li>
@@ -34,7 +34,12 @@ li {
 
 li:hover {
   background-color: yellow;
+}
 
+.filmList {
+  border: 2px solid red;
+  border-radius: 15px;
+  margin: 15px
 }
 
 </style>

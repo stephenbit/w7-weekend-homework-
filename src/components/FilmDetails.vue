@@ -1,6 +1,6 @@
 <template lang="html">
 
-  <div id="filmDetails">
+  <div id="filmDetails" class="filmDetails">
     <h2>{{ selectedFilm.title }}
       <b>
         ({{ selectedFilm.release_date }})
@@ -34,7 +34,12 @@ export default {
 
 .button {
   cursor: pointer;
+}
 
+.filmDetails {
+  border: 2px solid red;
+  border-radius: 15px;
+  margin: 15px;
 }
 
 </style>

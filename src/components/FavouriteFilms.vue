@@ -1,8 +1,8 @@
 <template lang="html">
-  <div id="FavouriteFilms">
+  <div id="FavouriteFilms" class="favouriteFilms">
     <h2>Favourites</h2>
     <ul>
-      <li v-for="favouriteFilm in favouriteFilms"> {{favouriteFilm.title}} <a v-on:click="removeFromFavourites">🗑️</a></li>
+      <li v-on:click="removeFromFavourites(favouriteFilm)" v-for="favouriteFilm in favouriteFilms">{{favouriteFilm.title}} 🗑️</li>
     </ul>
   </div>
 </template>
@@ -14,8 +14,8 @@ export default {
   name: 'favourite-films',
   props: ['favouriteFilms'],
   methods: {
-    removeFromFavourites() {
-      eventBus.$emit('remove-favourite', this.favouriteFilm)
+    removeFromFavourites(film) {
+      eventBus.$emit('remove-favourite', film)
     },
   }
 }
@@ -26,7 +26,7 @@ export default {
 
 <style lang="css" scoped>
   h2 {
-    font-size: 2em;
+    font-size: 1.2em;
   }
 
   ul {
@@ -35,10 +35,17 @@ export default {
 
   li {
     list-style-type: none;
+    cursor: pointer;
   }
 
   li:a {
     text-decoration: none;
+  }
+
+  .favouriteFilms {
+    border: 2px solid red;
+    border-radius: 15px;
+    margin: 15px;
   }
 
 </style>
